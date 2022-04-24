@@ -9,7 +9,10 @@ namespace IM.Domain.Entities
         public string Description { get; set; }
         public int Quantity { get; set; }       
         public Price Price { get; set; }
+        public virtual ICollection<Inventory> Inventories { get; set; }
         public virtual ICollection<ProductInventory> ProductInventories { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
 
         public bool ValidatePricing()
         {

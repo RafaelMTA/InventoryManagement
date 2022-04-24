@@ -11,6 +11,7 @@ namespace IM.Domain.Entities
         public Price Price { get; set; }
         public Guid SupplierId { get; set; }
         public Supplier Supplier { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<ProductInventory> ProductInventories { get; set; }
     }
 }

@@ -9,7 +9,23 @@ namespace IM.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder
+            .Entity<Product>()
+            .HasMany(e => e.Inventories)
+            .WithMany(e => e.Products)
+            .UsingEntity<ProductInventory>(               
+                b => b.HasOne<Inventory>().WithMany().HasForeignKey("InventoryId"),
+                b => b.HasOne<Product>().WithMany().HasForeignKey("ProductId")
+            );
+
+            modelBuilder
+            .Entity<Order>()
+            .HasMany(e => e.Products)
+            .WithMany(e => e.Orders)
+            .UsingEntity<ProductOrder>(               
+                b => b.HasOne<Product>().WithMany().HasForeignKey("ProductId"),
+                b => b.HasOne<Order>().WithMany().HasForeignKey("OrderId")
+            );
         }
 
         public DbSet<Product> Products { get; set; }
