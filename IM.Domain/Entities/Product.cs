@@ -1,13 +1,12 @@
-﻿using IM.Domain.Interfaces.Entity;
-using IM.Domain.ValueObjects;
+﻿using IM.Domain.ValueObjects;
 
 namespace IM.Domain.Entities
 {
-    public class Product : AuditableEntity, IBaseEntity
+    public class Product : AuditableEntity
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Quantity { get; set; }       
+        public int Quantity { get; set; }
         public Price Price { get; set; }
         public virtual ICollection<Inventory> Inventories { get; set; }
         public virtual ICollection<ProductInventory> ProductInventories { get; set; }

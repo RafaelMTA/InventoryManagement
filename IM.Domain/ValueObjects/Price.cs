@@ -1,9 +1,7 @@
 ﻿using IM.Domain.Enum;
-using Microsoft.EntityFrameworkCore;
 
 namespace IM.Domain.ValueObjects
 {
-    [Owned]
     public class Price
     {
         public CurrencyType CurrencyType { get; set; }

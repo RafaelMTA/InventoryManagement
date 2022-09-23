@@ -13,7 +13,7 @@ namespace IM.Infrastructure.Context
             .Entity<Product>()
             .HasMany(e => e.Inventories)
             .WithMany(e => e.Products)
-            .UsingEntity<ProductInventory>(               
+            .UsingEntity<ProductInventory>(
                 b => b.HasOne<Inventory>().WithMany().HasForeignKey("InventoryId"),
                 b => b.HasOne<Product>().WithMany().HasForeignKey("ProductId")
             );
@@ -22,10 +22,42 @@ namespace IM.Infrastructure.Context
             .Entity<Order>()
             .HasMany(e => e.Products)
             .WithMany(e => e.Orders)
-            .UsingEntity<ProductOrder>(               
+            .UsingEntity<ProductOrder>(
                 b => b.HasOne<Product>().WithMany().HasForeignKey("ProductId"),
                 b => b.HasOne<Order>().WithMany().HasForeignKey("OrderId")
             );
+
+            modelBuilder
+            .Entity<Product>()
+            .OwnsOne(p => p.Price);
+
+            modelBuilder
+            .Entity<Inventory>()
+            .OwnsOne(p => p.Price);
+
+            modelBuilder
+            .Entity<Order>()
+            .OwnsOne(p => p.OrderDetails);
+
+            modelBuilder
+            .Entity<OrderDetails>()
+            .OwnsOne(p => p.ShippingAddress);
+
+            modelBuilder
+            .Entity<OrderDetails>()
+            .OwnsOne(p => p.Payment);
+
+            modelBuilder
+            .Entity<Company>()
+            .OwnsOne(p => p.Address);
+
+            modelBuilder
+            .Entity<Company>()
+            .OwnsOne(p => p.Contact);
+
+            modelBuilder
+            .Entity<User>()
+            .OwnsOne(p => p.UserDetails);
         }
 
         public DbSet<Product> Products { get; set; }

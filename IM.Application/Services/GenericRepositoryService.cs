@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using IM.Domain.Interfaces.ViewModel;
-using IM.Domain.Interfaces.Entity;
+using IM.Domain.Entities;
 using IM.Application.Interfaces.Repositories;
 using IM.Application.Interfaces.Services;
 using System.Linq.Expressions;
+using IM.Application.ViewModels;
 
 namespace IM.Application.Services
 {
-    public class GenericRepositoryService<T, U> : IGenericRepositoryService<T, U> where T : IBaseEntity where U : IBaseEntityViewModel
+    public class GenericRepositoryService<T, U> : IGenericRepositoryService<T, U> where T : AuditableEntity where U : AuditableEntityViewModel
     {
         private readonly IGenericRepository<T> _repository;
         private readonly IMapper _mapper;

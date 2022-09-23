@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace IM.Domain.ValueObjects 
+﻿namespace IM.Domain.ValueObjects
 {
-    [Owned]
     public class Email
     {
         public string Value { get; set; }
@@ -11,7 +8,7 @@ namespace IM.Domain.ValueObjects
 
         public Email(string value)
         {
-            if(!value.Contains("@")) throw new Exception("Email is invalid");
+            if (!value.Contains("@")) throw new Exception("Email is invalid");
 
             Value = value;
         }

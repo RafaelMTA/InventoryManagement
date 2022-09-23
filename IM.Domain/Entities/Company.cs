@@ -1,10 +1,9 @@
 ﻿using IM.Domain.Enum;
-using IM.Domain.Interfaces.Entity;
 using IM.Domain.ValueObjects;
 
 namespace IM.Domain.Entities
 {
-    public abstract class Company : AuditableEntity, IBaseEntity
+    public abstract class Company : AuditableEntity
     {
         public string TradeName { get; set; }
         public string LegalName { get; set; }

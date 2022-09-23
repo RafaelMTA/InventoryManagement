@@ -1,8 +1,6 @@
-﻿using IM.Domain.Interfaces.Entity;
-
-namespace IM.Domain.Entities
+﻿namespace IM.Domain.Entities
 {
-    public class ProductInventory : AuditableEntity, IBaseEntity
+    public class ProductInventory : AuditableEntity
     {
         public virtual Product Product { get; set; }
         public virtual Inventory Inventory { get; set; }

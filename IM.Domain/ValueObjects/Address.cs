@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace IM.Domain.ValueObjects
+﻿namespace IM.Domain.ValueObjects
 {
-    [Owned]
     public class Address
     {
         public string Street { get; set; }

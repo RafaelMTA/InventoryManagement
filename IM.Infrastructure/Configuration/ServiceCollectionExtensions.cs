@@ -8,6 +8,7 @@ using IM.Infrastructure.Context;
 using IM.Infrastructure.Repositories;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -26,7 +27,8 @@ namespace IM.Infrastructure.Configuration
             // Add services to the container.
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddControllers();
